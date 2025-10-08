@@ -1,0 +1,47 @@
+4  cd ansible-project/
+    5  ansible all -m ping 
+    6  ls 
+    7  ansible all --list-hosts
+    8  vim inventory 
+    9  ansible all --list-hosts
+   10  vim inventory 
+   11  ansible all --list-hosts
+   12  vim inventory 
+   13  ansible all --list-hosts
+   14  vim inventory 
+   15  ansible all --list-hosts
+   16  vim inventory 
+   17  ansible all --list-hosts
+   18  ansible database --list-hosts
+   19  ansible all --list-hosts
+   20  ansible 192.168.2.* --list-hosts
+   21  ansible 192.168.2.*, 192.168.3.*  --list-hosts
+   22  ansible '192.168.2.*', '192.168.3.*'  --list-hosts
+   23  ansible 192.168.2.* 192.168.3.*  --list-hosts
+   24  ansible '192.168.2.* 192.168.3.*'  --list-hosts
+   25  ansible 'all !192.168.*' --list-hosts
+   26  ansible 'all !192.168.1.*' --list-hosts
+   27  ansible 'all !database' --list-hosts
+   28  ansible controller --list-hosts
+   29  vim example1.yaml 
+   30  ansible-doc yum 
+   31  vim example1.yaml 
+   32  ansible-doc file
+   33  vim example1.yaml 
+   34  ansible-playbook example1.yaml --syntax-check 
+   35  ansible-playbook example1.yaml --dry-run 
+   36  ansible-playbook example1.yaml --check
+   37  ansible 'controller manage1 manage2' -m shell -a 'id'
+   38  vi ansible.cfg 
+   39* ansible 'controller manage1 manage2' -m shell -a 'id' 
+   40* ansible 'controller manage1 manage2' -m shell -a 'id' 
+   41  vi ansible.cfg 
+   42  ansible 'controller manage1 manage2' -m shell -a 'id' 
+   43  vi ansible.cfg 
+   44* ansible-playbook example1.yaml --c
+   45  ansible 'controller manage1 manage2' -b -m shell -a 'id' 
+   46  vim example1.yaml 
+   47  ansible-playbook example1.yaml --check
+   48  ansible-playbook example1.yaml 
+   49  vim example1.yaml 
+

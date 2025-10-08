@@ -1,0 +1,22 @@
+---
+- name: Remove httpd server from existing system 
+  hosts: 'manage1, manage2, controller'
+  ignore_errors: true 
+  become: true
+  tasks: 
+  
+    - name: clean your /var/www/html/
+      shell: rm -rf /var/www/html/* 
+
+
+    - name: stop httpd and disable 
+      service: 
+        name: httpd
+        state: stopped
+        enabled: false
+
+    - name: remove your httpd package 
+      yum: 
+        name: httpd
+        state: absent 
+  

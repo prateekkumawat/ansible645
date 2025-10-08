@@ -1,0 +1,15 @@
+---
+- name: learning day1 playbook write
+  hosts: controller
+  become: true  
+  tasks: 
+
+  - name: Install package 
+    yum:
+      name: httpd
+      state: latest
+
+  - name: create directory 
+    file: 
+      path: /tmp/prateek 
+      state: directory  

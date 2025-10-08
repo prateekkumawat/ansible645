@@ -1,0 +1,31 @@
+---
+- name: Learning example variable based playbook 
+  hosts: manage1
+  become: true
+  vars_files: 
+    - varsexample2_file.yaml 
+  tasks: 
+
+    - name: Install package {{ pkg1 }} 
+      yum: 
+        name: "{{ pkg1 }}"
+        state: absent
+   
+    - name: Install package {{ pkg2 }}
+      yum:
+        name: "{{ pkg2 }}"
+        state: absent
+
+    - name: Install package {{ pkg3 }}
+      yum:
+        name: "{{ pkg3 }}"
+        state: absent
+
+    - name: create directory {{ dir_path }}
+      file: 
+        path: "{{ dir_path }}" 
+        state: directory
+
+    - name: print {{ print }} msg on screen 
+      debug: 
+        msg: " print variable {{ print }} msg. "      

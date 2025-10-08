@@ -1,0 +1,7 @@
+---
+pkg1: httpd
+pkg2: samba
+pkg3: iputils
+pkg4: ex294
+pkg5: do295
+print: hello

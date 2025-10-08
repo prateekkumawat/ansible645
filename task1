@@ -1,0 +1,14 @@
+# Task1 
+
+- setup your ansible machine with controller and manage1 and manage2. 
+- setup inventory and ansible.cfg and all machine able to ping when run " ansible all -m ping "
+- create a directory on /tmp/setuptest using ad-hoc command in all machine.
+- create file with currentdate.txt  file in /tmp/setuptest using ad-hoc. 
+- put "Hello text using ansible" in all files. 
+- create a file.txt with content "Hello ansible" copy in all machine in /tmp/setuptest.
+
+
+# TASK2  
+
+- Setup Hello Page of index.html content over Nginx server. 
+- remove all httpd and nginx server from your system using playbooks. 

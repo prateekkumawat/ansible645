@@ -1,0 +1,17 @@
+controller
+manage1 
+manage2 
+
+192.168.146.128
+192.168.146.130
+192.168.146.131
+
+ 
+192.168.1.[15:25]
+
+192.168.[1:3].[2:5]
+
+[database]
+server1.example.com 
+server2.domain1.com
+server3.contoso.com

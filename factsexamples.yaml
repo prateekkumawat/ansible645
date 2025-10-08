@@ -1,0 +1,28 @@
+---
+- name: collection report based of ansible facts 
+  hosts: 'controller manage1 manage2' 
+  become: true 
+  gather_facts: yes
+  vars: 
+    - collection_path: /mnt/inventory  
+  tasks: 
+
+    - name: create a collection Directory 
+      file: 
+        path: "{{ collection_path }}" 
+        state: directory
+
+    - name: crate a file on path {{ collection_path }} 
+      file: 
+        path: "{{ collection_path }}/inventory.txt" 
+        state: touch 
+
+    - name: collect details using facts
+      lineinfile: 
+        path: "{{ collection_path }}/inventory.txt"
+        line: |
+          " -  This machine is Running with HostName {{ ansible_hostname }}.
+            -  This Machine is haveing IPAddress {{ ansible_default_ipv4.address }} and NetMask {{ ansible_default_ipv4.netmask }} and connected Network {{ ansible_default_ipv4.network }}. 
+            - Running OS is {{ ansible_distribution }} .
+            - Total swap availabel is {{ ansible_memory_mb.swap.total }} and used size is {{ ansible_memory_mb.swap.used }} Free Amount is {{ ansible_memory_mb.swap.free }} 
+            - Total RAM  availabel is {{ ansible_memory_mb.real.total }} and used size is {{ ansible_memory_mb.real.used }} Free Amount is {{ ansible_memory_mb.real.free }} . "

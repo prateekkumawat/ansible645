@@ -1,0 +1,17 @@
+---
+- name: Learning example variable based playbook 
+  hosts: manage1
+  become: true
+  vars: 
+    - pkg: ex29456
+    - print: hello 
+  tasks: 
+
+    - name: Install package {{ pkg }} 
+      yum: 
+        name: "{{ pkg }}"
+        state: latest 
+
+    - name: print {{ print }} msg on screen 
+      debug: 
+        msg: " print variable {{ print }} msg. "      

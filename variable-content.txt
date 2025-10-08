@@ -1,0 +1,34 @@
+#### variable uses in ansible ########
+
+- script or programe if you want create useable. 
+- variable programme is become dynamic. if you are not use variable playbook // script are become hardcoded. 
+- variables in ansible based on key:value method. 
+- varible vars need to define in playbooks for variables. 
+- variable syntax 
+
+   - file1 ----> file1 ; file_1 correct  --- file-1 or 1file ---- incorect method. 
+   - variables should not be ansible syntax. loop; yum; 
+   - should be written in small. KEYS ; Keys Package
+   - rootdirectorytest; root_directory_test ; root_direcorytest
+
+- variable if you are using in module if my pkg is variable 
+  
+   yum: 
+     name: "{{ pkg }}" 
+     state: test 
+
+- variable using in any string 
+
+  lineinfile: 
+     content: "Install package {{ pkg }} in system " 
+     path: /tmp/test.txt
+
+- variable can be define in playbook ; seprate variable file or command variable define. 
+
+- in ansible you don't need to define any typecasting for variables like int fload array list or anyother. 
+
+
+- ansible facts system define variables ; values variables based on system 
+- ansible facts collect by gather facts. 
+- ansible facts always used when we required system details. partition management , Hardware reports, hardware Inventory, Configure services require system details or network details 
+- ansible host -m setup | less 

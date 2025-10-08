@@ -1,0 +1,15 @@
+### ANSIBLe-playbook varsexample3.yaml -e 'pkg=httpd print=prateek'
+---
+- name: Learning example variable based playbook 
+  hosts: manage1
+  become: true 
+  tasks: 
+
+    - name: Install package {{ pkg }} 
+      yum: 
+        name: "{{ pkg }}"
+        state: latest 
+
+    - name: print {{ print }} msg on screen 
+      debug: 
+        msg: " print variable {{ print }} msg. "      
