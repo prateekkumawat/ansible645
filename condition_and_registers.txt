@@ -1,0 +1,63 @@
+Like in your every programming language, we have conditional statement; if and else is availabel. 
+use of these statement is for to manage your requirement and assist to you get a logical and regional output. 
+
+- ansible is not supported if or else type of statement. 
+- ansible play based on condition that if condition true/false  play will be run or not. 
+- we are using when for define condition in ansible. 
+- example of condition 
+
+yum: 
+  name: "{{ pkg }}" 
+  state: state
+when: pkg is defined 
+
+- in this example when is define ansible condition for play
+- if pkg variable value define in playbook then this play execute or else play will  not execute. 
+
+- type of condition can define in ansible playbook. 
+  
+   1.  check grater value 
+   
+   when: ansible_memory_mb.real.total >  4000
+
+   2. check less value 
+   
+   when: ansible_memory_mb.real.total <  4000 
+
+   3. grater then equal 
+ 
+   when: ansible_memory_mb.real.total >=  4000
+
+   4. less then equal 
+ 
+   when: ansible_memory_mb.real.total <= 4000 
+
+   5.  equal to 
+ 
+   when: ansible_memory_mb.real.total ==  4000
+
+   6. Not equal to 
+
+   when: ansible_memory_mb.real.total !=  4000
+
+   7. vaariable is defined 
+    
+   when: ansible_memory_mb.real.total is defined 
+
+   8. not defined 
+  
+   when: ansible_memory_mb.real.total is undefined 
+
+   9 And  condition 
+
+   when: ansible_memory_mb.real.total >  4000  and  ansible_memory_mb.swap.total >  2000
+
+   10. when: ansible_memory_mb.real.total >  4000  or  ansible_memory_mb.swap.total >  2000
+
+   11. when : 
+     - ( ansible_memory_mb.real.total >  4000  and  ansible_memory_mb.swap.total >  2000 ) or ansible_cputotal > 2 
+
+
+   Failed_when ::: this is syntax or condition used to fail your playbook and intruption purpose. 
+
+register :::::: when we control and develop our plays with conditions so we need output of plays to delegate your play output for your other plays for diffrent purposes. 

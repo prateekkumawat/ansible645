@@ -1,0 +1,28 @@
+---
+- name: learn condition examples 1 
+  hosts: manage1 
+  vars: 
+    pkg: httpd
+  ignore_errors: true     
+  tasks: 
+
+    - name: Install {{ pkg }} package in system
+      yum: 
+        name: "{{ pkg }}"
+        state: present 
+      register: rc_pkg   
+      when: pkg is defined 
+
+    - name: for development purpose print register
+      debug: 
+        var: rc_pkg
+
+    - name: print success msg og play 
+      debug: 
+        msg: " your {{ pkg }} is successfully Installed. " 
+      when: rc_pkg.rc == 0 
+
+    - name: print failure msg on play 
+      debug: 
+        msg: " your {{ pkg }} failed to installed. failure msg is {{ rc_pkg.msg }} . " 
+      when: rc_pkg.rc != 0      
