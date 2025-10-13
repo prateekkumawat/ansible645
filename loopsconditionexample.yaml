@@ -1,0 +1,42 @@
+---
+- name: manage loop example
+  hosts: manage1 
+  vars: 
+     directory_path: 
+       - /tmp/test1
+       - /tmp/test2
+       - /mnt/test3
+       - /mnt/test4
+     users: 
+       - uname: prateek1
+         useruid: 11001
+         usercomment: "Prateek Kumawat"
+       - uname: prateek2
+         useruid: 11003
+         usercomment: "Prateek Ansible"    
+  tasks: 
+
+    - name: install multiple package 
+      yum: 
+        name: "{{ item }}" 
+        state: present 
+      loop: 
+        - httpd
+        - nginx
+        - php 
+        - vim 
+        - samba
+
+    - name: create temprory dir 
+      file:
+        path: "{{ item }}" 
+        state: directory 
+      loop: 
+        - "{{ directory_path }}"  
+
+    - name: create user define 
+      user: 
+        name: "{{ item.uname }}"
+        uid: "{{ item.useruid }}" 
+        comment: "{{ item.usercomment }}" 
+      loop: "{{ users }}"     
