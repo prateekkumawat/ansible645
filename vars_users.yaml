@@ -1,0 +1,17 @@
+---
+deptgrp:
+  - manager
+  - support 
+  - ops 
+  - l1
+  - dev
+
+deptusers:
+    - uname: l1
+      deptuid: 13001
+      pgroup: l1 
+      sgroup: manager
+    - uname: l2 
+      deptuid: 13003
+      pgroup: manager 
+      sgroup: ops      

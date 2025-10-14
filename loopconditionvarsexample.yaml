@@ -1,0 +1,26 @@
+---
+- name: setup users and group with loop condition and variables 
+  hosts: manage1 
+  vars_files: 
+    - vars_users.yaml 
+    - vars_userspass.yaml 
+  become: true     
+  tasks: 
+
+    - name: add groups in system 
+      group: 
+        name: "{{ item }}"
+        state: present    
+      loop: "{{ deptgrp }}"   
+      when: deptgrp is defined 
+
+    - name: add users in system 
+      user: 
+        name: "{{ item.uname }}" 
+        uid:  "{{ item.deptuid }}"  
+        group: "{{ item.pgroup }}"
+        groups: "{{ item.sgroup }}"
+        append: yes 
+        password: "{{ userpass | password_hash ('sha512') }}"   
+      loop: "{{ deptusers }}"
+      when: deptusers is defined and userpass is defined     
