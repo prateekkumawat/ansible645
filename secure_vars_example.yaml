@@ -1,0 +1,21 @@
+---
+- name: secure variables details
+  hosts: manage1 
+  vars_files: 
+    - varsecure_file.yaml
+  tasks: 
+
+     - name: use secure variables 
+       file: 
+         path: "{{ datapath }}"
+         state: directory
+           
+     - name: use secure files 
+       file: 
+         path: "{{ datapath }}/tmpdata.txt"
+         state: touch 
+
+     - name: secure data value pass 
+       lineinfile: 
+         path: "{{ datapath }}/tmpdata.txt"
+         line: " this is secure {{ datamsg }} and provide secure value is {{ datavalue }}. " 
