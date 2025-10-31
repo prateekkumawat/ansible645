@@ -1,0 +1,9 @@
+Listen {{ port_number }} 
+<virtualhost {{ ansible_default_ipv4.address }}:{{ port_number }}> 
+servername {{ ansible_hostname }}
+documentroot {{ web_path }}
+</virtualhost>
+
+<directory {{ web_path }}>
+require all granted 
+</directory>

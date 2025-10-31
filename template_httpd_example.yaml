@@ -1,0 +1,45 @@
+---
+- name: deploy httpd server based on template 
+  hosts: manage2
+  become: true 
+  vars_files: 
+    - http_vars.yaml
+  tasks: 
+
+    - name: Install {{ pkg }} package 
+      yum: 
+        name: "{{ pkg }}" 
+        state: latest 
+
+    - name: create {{ web_path }} directory 
+      file: 
+        path: "{{ web_path }}" 
+        state: directory 
+
+    - name: copy configuration 
+      template: 
+        src: httpd.conf.j2 
+        dest: /etc/httpd/conf.d/web.conf
+
+    - name: create index.html 
+      file: 
+        path: "{{ web_path }}/index.html" 
+        state: touch
+   
+    - name: copy content 
+      lineinfile: 
+        path: "{{ web_path }}/index.html" 
+        line: " hEllo Web page by ansible" 
+
+    - name: start services 
+      service:
+        name: httpd 
+        state: started 
+        enabled: true 
+         
+    - name: allow http rules 
+      firewalld: 
+        service: http
+        immediate: true 
+        state: enabled 
+        permanent: true       

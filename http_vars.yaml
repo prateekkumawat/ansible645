@@ -1,0 +1,4 @@
+---
+port_number: 8088
+web_path: /var/www/data
+pkg: httpd

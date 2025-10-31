@@ -1,0 +1,5 @@
+---
+# vars file for httpd
+port_number: 8089
+web_path: /var/www/data
+pkg: httpd
